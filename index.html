@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>See Jay — Market Intelligence</title>
+<title>See Jay — Market Intelligence v2</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -14,12 +14,11 @@
   --teal:#1D9E75;--teal-l:#E1F5EE;--teal-d:#085041;
   --coral:#D85A30;--coral-l:#FAECE7;
   --amber:#BA7517;--amber-l:#FAEEDA;
-  --green:#3B6D11;--green-l:#EAF3DE;
-  --gray:#5F5E5A;--gray-l:#F1EFE8;
   --blue:#185FA5;--blue-l:#E6F1FB;
   --red:#E24B4A;--red-l:#FCEBEB;
+  --green:#3B6D11;--green-l:#EAF3DE;
+  --gray:#5F5E5A;--gray-l:#F1EFE8;
   --radius:8px;--radius-lg:12px;
-  --shadow:0 1px 4px rgba(0,0,0,0.08);
 }
 @media(prefers-color-scheme:dark){
   :root{
@@ -27,335 +26,328 @@
     --text:#e8e6de;--text2:#b4b2a9;--text3:#6c6a62;
     --border:#3a3a36;--border2:#4a4a46;
     --purple-l:#26215C;--teal-l:#04342C;--coral-l:#4A1B0C;
-    --amber-l:#412402;--green-l:#173404;--gray-l:#2C2C2A;--blue-l:#042C53;--red-l:#501313;
+    --amber-l:#412402;--blue-l:#042C53;--red-l:#501313;--green-l:#173404;--gray-l:#2C2C2A;
   }
 }
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
-/* HEADER */
-.header{background:var(--bg);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;gap:16px;height:52px;position:sticky;top:0;z-index:100}
-.logo{font-weight:700;font-size:16px;color:var(--purple);letter-spacing:-0.3px}
+.header{background:var(--bg);border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;gap:12px;height:52px;position:sticky;top:0;z-index:100;flex-wrap:wrap}
+.logo{font-weight:700;font-size:15px;color:var(--purple);white-space:nowrap}
 .logo span{color:var(--text2);font-weight:400}
-.nav{display:flex;gap:2px;margin-left:auto}
-.nav-btn{padding:6px 12px;border-radius:var(--radius);border:none;background:none;color:var(--text2);font-size:13px;cursor:pointer;transition:all .15s}
+.logo sub{font-size:10px;color:var(--text3)}
+.nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+.nav-btn{padding:5px 10px;border-radius:var(--radius);border:none;background:none;color:var(--text2);font-size:12px;cursor:pointer;white-space:nowrap}
 .nav-btn:hover{background:var(--bg3);color:var(--text)}
 .nav-btn.active{background:var(--purple-l);color:var(--purple);font-weight:500}
-.save-badge{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--teal-l);color:var(--teal);display:none}
-/* LAYOUT */
-.view{display:none;padding:20px;max-width:1200px;margin:0 auto}
+.saved{font-size:11px;padding:2px 8px;border-radius:20px;background:var(--teal-l);color:var(--teal);display:none}
+.view{display:none;padding:16px;max-width:1200px;margin:0 auto}
 .view.active{display:block}
-/* CARDS */
-.card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;box-shadow:var(--shadow)}
-.card-title{font-weight:600;font-size:14px;margin-bottom:12px;color:var(--text)}
-/* BUTTONS */
-.btn{padding:7px 14px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg);color:var(--text);font-size:13px;cursor:pointer;transition:all .15s}
-.btn:hover{background:var(--bg3)}
-.btn-primary{background:var(--purple);color:#fff;border-color:var(--purple)}
-.btn-primary:hover{background:var(--purple-d)}
-.btn-danger{color:var(--red);border-color:var(--red)}
-.btn-sm{padding:4px 10px;font-size:12px}
-/* FORM */
-.field{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
-.field label{font-size:12px;color:var(--text2);width:96px;flex-shrink:0}
-.field input,.field select,.field textarea{flex:1;min-width:120px;padding:6px 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:13px}
-.field input[type=range]{padding:0}
-.field textarea{min-height:60px;resize:vertical}
-.slider-val{font-size:12px;min-width:26px;text-align:right;color:var(--text2)}
-.panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-top:12px;display:none}
+select,input[type=text],input[type=number]{font-size:12px;height:28px;padding:0 8px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg);color:var(--text)}
+button{font-size:12px;height:28px;padding:0 10px;border-radius:var(--radius);border:1px solid var(--border2);background:var(--bg);color:var(--text);cursor:pointer}
+button:hover{background:var(--bg3)}
+.btn-p{background:var(--purple);color:#fff;border-color:var(--purple)}
+.btn-p:hover{background:var(--purple-d)}
+.btn-d{color:var(--red);border-color:var(--red)}
+.tb{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px;margin-top:10px;display:none}
 .panel.open{display:block}
-.panel h3{font-size:14px;font-weight:600;margin-bottom:12px}
-.btn-row{display:flex;gap:8px;margin-top:12px}
-/* TAGS */
-.tag{font-size:11px;padding:2px 8px;border-radius:20px;display:inline-block;white-space:nowrap}
+.panel h3{font-size:13px;font-weight:600;margin-bottom:10px}
+.f{display:flex;gap:6px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+.f label{font-size:11px;color:var(--text2);width:100px;flex-shrink:0}
+.f input,.f select,.f textarea{flex:1;min-width:100px}
+.f input[type=range]{padding:0}
+.f textarea{min-height:50px;resize:vertical;padding:6px 8px;font-size:12px}
+.sv{font-size:11px;min-width:24px;text-align:right;color:var(--text2)}
+.br{display:flex;gap:6px;margin-top:10px}
 /* MAP */
-#map-wrap{position:relative;width:100%;padding-bottom:60%;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);overflow:hidden;margin-bottom:10px}
-#map-canvas{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
-.map-controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
-.map-controls label{font-size:12px;color:var(--text2)}
-.map-controls select{padding:5px 8px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:12px}
-.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-.legend-item{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text2)}
-.legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+#mwrap{position:relative;width:100%;padding-bottom:62%;border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:8px}
+#mc{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.mc-row{display:flex;gap:6px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+.mc-row label{font-size:11px;color:var(--text2);white-space:nowrap}
+.legend{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.li{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--text2)}
+.ld{width:8px;height:8px;border-radius:50%;flex-shrink:0}
 /* SCORES */
 .sc-list{display:flex;flex-direction:column;gap:6px}
 .sc-item{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.sc-item.is-self{border-color:var(--red);border-width:2px}
-.sc-head{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;background:var(--bg2);transition:background .1s}
-.sc-head:hover{background:var(--bg3)}
-.sc-name{font-weight:600;flex:1;font-size:14px}
-.sc-total{font-size:13px;font-weight:600;min-width:38px;text-align:right}
-.sc-body{padding:12px 14px;display:none;border-top:1px solid var(--border)}
-.sc-body.open{display:block}
-.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
-.bar-label{font-size:11px;color:var(--text2);width:96px;flex-shrink:0}
-.bar-track{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;transition:width .3s}
-.bar-val{font-size:11px;font-weight:600;min-width:24px;text-align:right}
-.sc-memo{font-size:12px;color:var(--text2);margin-top:8px;padding-top:8px;border-top:1px solid var(--border);line-height:1.5}
-.sc-src{font-size:11px;color:var(--text3);margin-top:4px}
+.sc-item.self{border-color:var(--red);border-width:2px}
+.sc-hd{display:flex;align-items:center;gap:8px;padding:9px 12px;cursor:pointer;background:var(--bg2)}
+.sc-hd:hover{background:var(--bg3)}
+.sc-nm{font-weight:600;flex:1;font-size:13px}
+.sc-tot{font-size:12px;font-weight:700;min-width:38px;text-align:right}
+.sc-bd{padding:12px;display:none;border-top:1px solid var(--border)}
+.sc-bd.open{display:block}
+.bar-r{display:flex;align-items:center;gap:6px;margin-bottom:3px}
+.bar-l{font-size:11px;color:var(--text2);width:100px;flex-shrink:0}
+.bar-t{flex:1;height:5px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.bar-f{height:100%;border-radius:3px}
+.bar-v{font-size:11px;font-weight:600;min-width:22px;text-align:right}
+.memo{font-size:11px;color:var(--text2);margin-top:7px;padding-top:7px;border-top:1px solid var(--border);line-height:1.5}
+.src{font-size:10px;color:var(--text3);margin-top:2px}
+.tag-row{display:flex;gap:4px;flex-wrap:wrap;margin-top:5px}
+.tag{font-size:10px;padding:1px 7px;border-radius:20px;border:1px solid;display:inline-block}
 /* AXES */
 .ax-list{display:flex;flex-direction:column;gap:8px}
 .ax-card{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.ax-head{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--bg2)}
-.ax-id{font-size:11px;padding:2px 8px;border-radius:20px;font-weight:600}
-.ax-name{font-weight:600;font-size:14px;flex:1}
-.ax-desc{font-size:12px;color:var(--text2);padding:8px 14px;line-height:1.5}
-.bands{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;padding:8px 14px 12px}
-.band{padding:6px 10px;border-radius:var(--radius);font-size:12px;line-height:1.5}
-.band-lo{background:var(--gray-l);color:var(--gray)}
-.band-mid{background:var(--amber-l);color:var(--amber)}
-.band-hi{background:var(--teal-l);color:var(--teal-d)}
-.band-label{font-weight:600;font-size:11px;margin-bottom:2px}
-.ax-basis{font-size:11px;color:var(--text3);padding:0 14px 10px;white-space:pre-line;line-height:1.5}
+.ax-hd{display:flex;align-items:center;gap:8px;padding:9px 12px;background:var(--bg2)}
+.ax-id{font-size:10px;padding:2px 8px;border-radius:20px;font-weight:600}
+.ax-nm{font-weight:600;flex:1}
+.ax-ds{font-size:11px;color:var(--text2);padding:7px 12px;line-height:1.5}
+.bands{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;padding:6px 12px 10px}
+.band{padding:5px 8px;border-radius:var(--radius);font-size:11px;line-height:1.4}
+.blo{background:var(--gray-l);color:var(--gray)}.bmi{background:var(--amber-l);color:var(--amber)}.bhi{background:var(--teal-l);color:var(--teal-d)}
+.bl{font-weight:600;font-size:10px;margin-bottom:2px}
+.ax-bs{font-size:10px;color:var(--text3);padding:0 12px 10px;white-space:pre-line;line-height:1.5}
 /* MARKET */
-.mkt-list{display:flex;flex-direction:column;gap:6px}
-.mkt-node{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
-.mkt-head{display:flex;align-items:center;gap:8px;padding:10px 14px;cursor:pointer;transition:background .1s}
-.mkt-head:hover{background:var(--bg2)}
-.mkt-toggle{font-size:11px;color:var(--text3);width:14px;flex-shrink:0}
-.mkt-name{font-weight:500;min-width:150px;flex:1}
-.mkt-bar-wrap{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;min-width:40px;max-width:200px}
-.mkt-bar{height:100%;border-radius:3px}
-.mkt-val{font-size:13px;font-weight:600;min-width:100px;text-align:right;white-space:nowrap}
-.mkt-tags{display:flex;gap:4px;flex-shrink:0}
-.mkt-memo{font-size:11px;color:var(--text3);padding:0 14px 8px;line-height:1.4}
-.mkt-children{padding-left:16px}
+.mk-list{display:flex;flex-direction:column;gap:6px}
+.mk-node{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden}
+.mk-hd{display:flex;align-items:center;gap:7px;padding:9px 12px;cursor:pointer}
+.mk-hd:hover{background:var(--bg2)}
+.mk-nm{font-weight:500;min-width:140px;flex:1}
+.mk-bw{flex:1;height:6px;background:var(--bg3);border-radius:3px;overflow:hidden;min-width:30px;max-width:180px}
+.mk-b{height:100%;border-radius:3px}
+.mk-v{font-size:12px;font-weight:600;min-width:88px;text-align:right;white-space:nowrap}
+.mk-mm{font-size:10px;color:var(--text3);padding:0 12px 8px;line-height:1.4}
+.mk-ch{padding-left:12px}
 /* SUMMARY */
-.summary-table{overflow-x:auto;margin-bottom:16px}
-table.sum{border-collapse:collapse;width:100%;min-width:600px;font-size:12px}
-table.sum th{padding:8px 10px;text-align:center;background:var(--bg2);border-bottom:2px solid var(--border);font-weight:600;white-space:nowrap}
-table.sum th:first-child{text-align:left}
-table.sum td{padding:6px 10px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}
-table.sum td:first-child{text-align:left;font-weight:500;white-space:nowrap}
-table.sum tr.self-row td{background:var(--red-l)}
-table.sum tr:hover td{background:var(--bg2)}
-.mini-bar-cell{display:flex;align-items:center;gap:4px;justify-content:center}
-.mini-bar{height:5px;border-radius:3px;min-width:2px}
-.insight-box{background:var(--purple-l);border:1px solid var(--purple);border-radius:var(--radius-lg);padding:14px 16px;font-size:13px;color:var(--purple-d);line-height:1.7}
-/* GRID */
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
-@media(max-width:640px){.grid-2,.grid-3{grid-template-columns:1fr}.bands{grid-template-columns:1fr}}
-/* KPI CARDS */
-.kpi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:20px}
-.kpi-card{background:var(--bg2);border-radius:var(--radius-lg);padding:14px 16px;border:1px solid var(--border)}
-.kpi-label{font-size:12px;color:var(--text2);margin-bottom:6px}
-.kpi-value{font-size:26px;font-weight:700;color:var(--text)}
-.kpi-sub{font-size:12px;color:var(--text3);margin-top:2px}
+.sw{overflow-x:auto}
+table.st{border-collapse:collapse;width:100%;min-width:640px;font-size:11px}
+table.st th{padding:6px 8px;text-align:center;background:var(--bg2);border-bottom:2px solid var(--border);font-weight:600;white-space:nowrap}
+table.st th:first-child{text-align:left;min-width:120px}
+table.st td{padding:5px 8px;border-bottom:1px solid var(--border);text-align:center;vertical-align:middle}
+table.st td:first-child{text-align:left;font-weight:500;white-space:nowrap}
+table.st tr.s-row td{background:var(--red-l)}
+table.st tr:hover td{background:var(--bg2)}
+.cbc{display:flex;align-items:center;gap:3px;justify-content:center}
+.mb{height:4px;border-radius:2px}
+.ins{background:var(--purple-l);border:1px solid var(--purple);border-radius:var(--radius-lg);padding:12px 14px;font-size:12px;color:var(--purple-d);line-height:1.7;margin-top:10px}
 /* MODAL */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:flex;align-items:center;justify-content:center;display:none}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:200;display:none;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
-.modal{background:var(--bg);border-radius:var(--radius-lg);padding:20px;width:90%;max-width:480px;max-height:80vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
-.modal h2{font-size:16px;font-weight:700;margin-bottom:16px}
-/* TOAST */
-.toast{position:fixed;bottom:24px;right:24px;background:var(--teal);color:#fff;padding:10px 18px;border-radius:var(--radius-lg);font-size:13px;font-weight:500;z-index:300;transform:translateY(80px);opacity:0;transition:all .3s}
+.modal{background:var(--bg);border-radius:var(--radius-lg);padding:18px;width:92%;max-width:500px;max-height:85vh;overflow-y:auto}
+.modal h2{font-size:15px;font-weight:700;margin-bottom:14px}
+.toast{position:fixed;bottom:20px;right:20px;background:var(--teal);color:#fff;padding:9px 16px;border-radius:var(--radius-lg);font-size:12px;font-weight:500;z-index:300;transform:translateY(60px);opacity:0;transition:all .25s}
 .toast.show{transform:translateY(0);opacity:1}
+@media(max-width:600px){.bands{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <header class="header">
-  <div class="logo">See Jay <span>Market Intelligence</span></div>
-  <span class="save-badge" id="save-badge">保存済み ✓</span>
+  <div class="logo">See Jay <span>Market Intelligence</span> <sub>v2</sub></div>
+  <span class="saved" id="saved">保存済み ✓</span>
   <nav class="nav">
-    <button class="nav-btn active" onclick="goTo('map')">マップ</button>
-    <button class="nav-btn" onclick="goTo('scores')">競合スコア</button>
-    <button class="nav-btn" onclick="goTo('axes')">軸の定義</button>
-    <button class="nav-btn" onclick="goTo('market')">市場規模</button>
-    <button class="nav-btn" onclick="goTo('summary')">サマリー</button>
+    <button class="nav-btn active" onclick="go('map')">マップ</button>
+    <button class="nav-btn" onclick="go('scores')">競合スコア</button>
+    <button class="nav-btn" onclick="go('axes')">軸の定義</button>
+    <button class="nav-btn" onclick="go('market')">市場規模</button>
+    <button class="nav-btn" onclick="go('summary')">サマリー</button>
   </nav>
 </header>
 
 <!-- MAP -->
 <div id="view-map" class="view active">
-  <div class="map-controls">
+  <div class="mc-row">
     <label>横軸</label><select id="xAx"></select>
-    <label style="margin-left:8px">縦軸</label><select id="yAx"></select>
-    <label style="margin-left:8px">絞り込み</label><select id="catF"></select>
-    <button class="btn btn-primary btn-sm" onclick="openCompModal()">＋ 競合追加</button>
-    <button class="btn btn-sm" onclick="resetMap()">リセット</button>
+    <label style="margin-left:6px">縦軸</label><select id="yAx"></select>
   </div>
-  <div id="map-wrap"><canvas id="map-canvas"></canvas></div>
+  <div class="mc-row">
+    <label>商品カテゴリ(M)</label><select id="fM"></select>
+    <label style="margin-left:6px">事業モデル(N)</label><select id="fN"></select>
+    <label style="margin-left:6px">カテゴリ</label><select id="fCat"></select>
+    <button style="margin-left:auto" onclick="resetMap()">リセット</button>
+    <button class="btn-p" onclick="openCompModal()">＋追加</button>
+  </div>
+  <div id="mwrap"><canvas id="mc"></canvas></div>
   <div class="legend" id="legend"></div>
 </div>
 
 <!-- SCORES -->
 <div id="view-scores" class="view">
-  <div style="display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
-    <select id="sc-cat" onchange="renderScores()" style="padding:6px 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:13px">
-      <option>すべて</option><option>ガイド会社</option><option>OTA/プラットフォーム</option>
-      <option>総合旅行会社・DMC</option><option>フリーランスガイド</option><option>自社</option>
-    </select>
-    <select id="sc-sort" onchange="renderScores()" style="padding:6px 10px;border:1px solid var(--border2);border-radius:var(--radius);background:var(--bg);color:var(--text);font-size:13px">
-      <option value="total">総合スコア順</option><option value="name">名前順</option>
-    </select>
-    <button class="btn btn-primary btn-sm" style="margin-left:auto" onclick="openCompModal()">＋ 競合追加</button>
+  <div class="tb">
+    <select id="sc-cat" onchange="renderScores()"><option>すべて</option><option>ガイド会社</option><option>OTA/プラットフォーム</option><option>総合旅行会社・DMC</option><option>フリーランスガイド</option><option>自社</option></select>
+    <select id="sc-sort" onchange="renderScores()"><option value="O">主力商品一致度順</option><option value="total">総合スコア順</option><option value="name">名前順</option></select>
+    <button class="btn-p" style="margin-left:auto" onclick="openCompModal()">＋追加</button>
   </div>
   <div class="sc-list" id="sc-list"></div>
 </div>
 
 <!-- AXES -->
 <div id="view-axes" class="view">
-  <div style="margin-bottom:12px">
-    <button class="btn btn-primary btn-sm" onclick="openAxisModal()">＋ 軸を追加</button>
-  </div>
+  <div class="tb"><button class="btn-p" onclick="openAxisModal()">＋軸を追加</button></div>
   <div class="ax-list" id="ax-list"></div>
 </div>
 
 <!-- MARKET -->
 <div id="view-market" class="view">
-  <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
-    <button class="btn btn-primary btn-sm" onclick="openMktModal()">＋ 市場を追加</button>
-    <button class="btn btn-sm" onclick="mktExpandAll(true)">すべて展開</button>
-    <button class="btn btn-sm" onclick="mktExpandAll(false)">折りたたむ</button>
+  <div class="tb">
+    <button class="btn-p" onclick="openMktModal()">＋市場を追加</button>
+    <button onclick="mktAll(true)">すべて展開</button>
+    <button onclick="mktAll(false)">折りたたむ</button>
   </div>
-  <div class="mkt-list" id="mkt-list"></div>
+  <div class="mk-list" id="mk-list"></div>
 </div>
 
 <!-- SUMMARY -->
 <div id="view-summary" class="view">
-  <div class="summary-table" id="sum-table"></div>
-  <div class="insight-box" id="sum-insight"></div>
+  <div class="sw" id="sum-tbl"></div>
+  <div class="ins" id="sum-ins"></div>
 </div>
 
 <!-- COMP MODAL -->
-<div class="modal-bg" id="comp-modal">
-  <div class="modal">
-    <h2 id="comp-modal-title">競合を追加</h2>
-    <div class="field"><label>名前</label><input id="cm-name" type="text" placeholder="会社名"></div>
-    <div class="field"><label>カテゴリ</label>
-      <select id="cm-cat"><option>ガイド会社</option><option>OTA/プラットフォーム</option>
-      <option>総合旅行会社・DMC</option><option>フリーランスガイド</option><option>手配業者</option><option>自社</option></select>
-    </div>
-    <div id="cm-sliders"></div>
-    <div class="field"><label>メモ</label><input id="cm-memo" type="text" placeholder="特徴・根拠など"></div>
-    <div class="field"><label>出典</label><input id="cm-src" type="text" placeholder="URL・資料名"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="saveComp()">保存</button>
-      <button class="btn" onclick="closeCompModal()">キャンセル</button>
-      <button class="btn btn-danger" id="cm-del" style="display:none;margin-left:auto" onclick="delComp()">削除</button>
-    </div>
+<div class="modal-bg" id="cm-modal">
+<div class="modal">
+  <h2 id="cm-title">競合を追加</h2>
+  <div class="f"><label>名前</label><input id="cm-name" type="text"></div>
+  <div class="f"><label>カテゴリ</label><select id="cm-cat"><option>ガイド会社</option><option>OTA/プラットフォーム</option><option>総合旅行会社・DMC</option><option>フリーランスガイド</option><option>手配業者</option><option>自社</option></select></div>
+  <div class="f"><label>M 商品カテゴリ</label><select id="cm-M"><option>半日〜1日プライベートツアー</option><option>ガイドのみ</option><option>複数日カスタムツアー</option><option>総合手配</option><option>体験商品中心</option><option>パッケージツアー</option><option>マーケットプレイス型</option><option>法人/旅行会社向け手配</option><option>その他</option></select></div>
+  <div class="f"><label>N 事業モデル</label><select id="cm-N"><option>B2B受託型</option><option>B2C直販型</option><option>OTA依存型</option><option>マーケットプレイス型</option><option>総合旅行手配型</option><option>ハイブリッド型</option></select></div>
+  <div id="cm-sliders"></div>
+  <div class="f"><label>メモ</label><textarea id="cm-memo"></textarea></div>
+  <div class="f"><label>出典</label><input id="cm-src" type="text" placeholder="URL・資料名"></div>
+  <div class="br">
+    <button class="btn-p" onclick="saveComp()">保存</button>
+    <button onclick="closeCompModal()">キャンセル</button>
+    <button class="btn-d" id="cm-del" style="display:none;margin-left:auto" onclick="delComp()">削除</button>
   </div>
+</div>
 </div>
 
 <!-- AXIS MODAL -->
-<div class="modal-bg" id="axis-modal">
-  <div class="modal">
-    <h2 id="axis-modal-title">軸を追加</h2>
-    <div class="field"><label>ID（英大文字）</label><input id="am-id" type="text" maxlength="2" style="width:60px;flex:none"></div>
-    <div class="field"><label>軸名</label><input id="am-name" type="text"></div>
-    <div class="field"><label>説明</label><input id="am-desc" type="text"></div>
-    <div class="field"><label>低（0〜30）</label><input id="am-lo" type="text"></div>
-    <div class="field"><label>中（31〜65）</label><input id="am-mid" type="text"></div>
-    <div class="field"><label>高（66〜100）</label><input id="am-hi" type="text"></div>
-    <div class="field"><label>判断指標</label><textarea id="am-basis"></textarea></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="saveAxis()">保存</button>
-      <button class="btn" onclick="closeAxisModal()">キャンセル</button>
-      <button class="btn btn-danger" id="am-del" style="display:none;margin-left:auto" onclick="delAxis()">削除</button>
-    </div>
+<div class="modal-bg" id="am-modal">
+<div class="modal">
+  <h2 id="am-title">軸を追加</h2>
+  <div class="f"><label>ID</label><input id="am-id" type="text" maxlength="2" style="width:50px;flex:none"></div>
+  <div class="f"><label>軸名</label><input id="am-name" type="text"></div>
+  <div class="f"><label>説明</label><input id="am-desc" type="text"></div>
+  <div class="f"><label>低（0〜30）</label><input id="am-lo" type="text"></div>
+  <div class="f"><label>中（31〜65）</label><input id="am-mid" type="text"></div>
+  <div class="f"><label>高（66〜100）</label><input id="am-hi" type="text"></div>
+  <div class="f"><label>判断指標</label><textarea id="am-basis"></textarea></div>
+  <div class="br">
+    <button class="btn-p" onclick="saveAxis()">保存</button>
+    <button onclick="closeAxisModal()">キャンセル</button>
+    <button class="btn-d" id="am-del" style="display:none;margin-left:auto" onclick="delAxis()">削除</button>
   </div>
+</div>
 </div>
 
 <!-- MARKET MODAL -->
-<div class="modal-bg" id="mkt-modal">
-  <div class="modal">
-    <h2 id="mkt-modal-title">市場を追加</h2>
-    <div class="field"><label>市場名</label><input id="mm-name" type="text"></div>
-    <div class="field"><label>規模（億円）</label><input id="mm-val" type="number" placeholder="0=要調査"></div>
-    <div class="field"><label>種別</label>
-      <select id="mm-type"><option value="TAM">TAM</option><option value="SAM">SAM</option>
-      <option value="SOM">実戦用市場</option><option value="sub">サブ市場</option></select>
-    </div>
-    <div class="field"><label>親市場</label><select id="mm-parent"><option value="">なし（トップレベル）</option></select></div>
-    <div class="field"><label>ステータス</label>
-      <select id="mm-status"><option value="confirmed">確定値</option><option value="estimated">推計値</option><option value="todo">要調査</option></select>
-    </div>
-    <div class="field"><label>See Jay関連</label>
-      <select id="mm-sj"><option value="">-</option><option value="current">現在の主戦場</option><option value="target">狙える市場</option></select>
-    </div>
-    <div class="field"><label>メモ・出典</label><input id="mm-memo" type="text"></div>
-    <div class="btn-row">
-      <button class="btn btn-primary" onclick="saveMkt()">保存</button>
-      <button class="btn" onclick="closeMktModal()">キャンセル</button>
-      <button class="btn btn-danger" id="mm-del" style="display:none;margin-left:auto" onclick="delMkt()">削除</button>
-    </div>
+<div class="modal-bg" id="mm-modal">
+<div class="modal">
+  <h2 id="mm-title">市場を追加</h2>
+  <div class="f"><label>市場名</label><input id="mm-name" type="text"></div>
+  <div class="f"><label>規模（億円）</label><input id="mm-val" type="number" placeholder="0=要調査"></div>
+  <div class="f"><label>種別</label><select id="mm-type"><option value="TAM">TAM</option><option value="SAM">SAM</option><option value="SOM">実戦用市場</option><option value="sub">サブ市場</option></select></div>
+  <div class="f"><label>親市場</label><select id="mm-parent"><option value="">なし（トップ）</option></select></div>
+  <div class="f"><label>ステータス</label><select id="mm-status"><option value="confirmed">確定値</option><option value="estimated">推計値</option><option value="todo">要調査</option></select></div>
+  <div class="f"><label>See Jay関連</label><select id="mm-sj"><option value="">-</option><option value="current">現在の主戦場</option><option value="target">狙える市場</option></select></div>
+  <div class="f"><label>メモ・出典</label><input id="mm-memo" type="text"></div>
+  <div class="br">
+    <button class="btn-p" onclick="saveMkt()">保存</button>
+    <button onclick="closeMktModal()">キャンセル</button>
+    <button class="btn-d" id="mm-del" style="display:none;margin-left:auto" onclick="delMkt()">削除</button>
   </div>
+</div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ── DATA ────────────────────────────────────────────────────
-const CAT_COLORS={
-  'ガイド会社':'#1D9E75','OTA/プラットフォーム':'#BA7517','総合旅行会社・DMC':'#534AB7',
-  'フリーランスガイド':'#888780','手配業者':'#185FA5','自社':'#E24B4A'
+// ── CONSTANTS ──────────────────────────────────────────────
+const CC={'ガイド会社':'#1D9E75','OTA/プラットフォーム':'#BA7517','総合旅行会社・DMC':'#534AB7','フリーランスガイド':'#888780','手配業者':'#185FA5','自社':'#E24B4A'};
+const TC={TAM:'#534AB7',SAM:'#1D9E75',SOM:'#D85A30',sub:'#888780'};
+const TL={TAM:'TAM',SAM:'SAM',SOM:'実戦',sub:'サブ'};
+const SL={confirmed:'確定',estimated:'推計',todo:'要調査'};
+const SC={confirmed:'#1D9E75',estimated:'#BA7517',todo:'#888780'};
+
+// M tag colors
+const MC_COL={'半日〜1日プライベートツアー':'#1D9E75','体験商品中心':'#BA7517','マーケットプレイス型':'#534AB7','パッケージツアー':'#185FA5','総合手配':'#D85A30','ガイドのみ':'#888780','複数日カスタムツアー':'#3B6D11','法人/旅行会社向け手配':'#E24B4A','その他':'#9c9a92'};
+const NC_COL={'B2B受託型':'#1D9E75','ハイブリッド型':'#BA7517','マーケットプレイス型':'#534AB7','OTA依存型':'#185FA5','B2C直販型':'#D85A30','総合旅行手配型':'#888780'};
+
+// ── DEFAULT DATA ────────────────────────────────────────────
+const DEFAULT={
+axes:[
+  {id:'A',name:'供給安定性',color:'#1D9E75',desc:'継続的に案件を受けられる公開上の供給キャパ。A1対応エリア数（40）＋A2対応言語数（20）＋A3公開商品数（40）',lo:'0〜30：1〜3エリア・1〜2言語・商品5以下',mid:'31〜65：4〜6エリア・2〜4言語・商品6〜50',hi:'66〜100：7エリア以上・5言語以上・商品51以上',basis:'A1 エリア数（40点）: 1エリア=10, 2〜3=20, 4〜6=30, 7以上=40\nA2 言語数（20点）: 1言語=5, 2=10, 3〜4=15, 5以上=20\nA3 商品数（40点）: 1〜5=10, 6〜20=20, 21〜50=30, 51以上=40\n情報源: 公式サイト・OTA商品一覧'},
+  {id:'B',name:'品質再現性',color:'#534AB7',desc:'誰が提供しても一定品質が出る構造が公開情報から見えるか。平均評価（40）＋低評価率（40）＋品質担保文言（20）',lo:'0〜30：品質管理なし。個人依存。評価4.0未満',mid:'31〜65：採用基準あり・平均評価4.3以上・低評価率5〜15%',hi:'66〜100：評価4.8以上・低評価率3%未満・採用研修保証サポート4項目完備',basis:'B1 平均評価（40点）: 4.8以上=40, 4.6〜4.79=30, 4.3〜4.59=20, 4.0〜4.29=10, 未満=0\nB2 低評価率（40点）: 3%未満=40, 3〜5%=30, 5〜10%=20, 10〜15%=10, 15%以上=0\nB3 品質担保文言（20点）: 各5点×4項目（審査・研修・品質保証・サポート）\n情報源: Google/TripAdvisor/OTAレビュー・公式サイト・FAQ'},
+  {id:'C',name:'B2B対応力',color:'#D85A30',desc:'旅行会社・法人が継続取引しやすい体制が公開情報から確認できるか。チェック5項目×20点',lo:'0〜20：B2C専用。法人向けページ・文言なし',mid:'21〜60：一部B2B対応。体制は薄い',hi:'61〜100：法人ページ・DMC文言・問い合わせ導線・見積請求・実績の5項目完備',basis:'各20点：①法人/Partner向けページあり ②Travel Agent/DMC/B2B文言あり ③法人向け問い合わせ導線あり ④見積・請求・契約・予約管理の記載あり ⑤協業先・導入実績・旅行会社向け実績あり\n情報源: 公式サイト・会社案内・LinkedIn・営業資料'},
+  {id:'D',name:'オペ柔軟性',color:'#BA7517',desc:'現場運用上の変更・個別要望に対応できるか。チェック5項目×20点',lo:'0〜20：固定プログラムのみ。変更不可',mid:'21〜60：一定のカスタム対応可能だが直前対応は困難',hi:'61〜100：Customizable・Tailor-made・直前対応・行程変更・個別相談の5項目完備',basis:'各20点：①Customizableと明記 ②Tailor-made/Bespokeと明記 ③直前対応/short notice/last-minute記載あり ④行程変更対応の記載あり ⑤個別相談・特別要望受付の記載あり\n情報源: 商品ページ・FAQ・問い合わせページ・予約条件'},
+  {id:'E',name:'商品設計柔軟性',color:'#185FA5',desc:'商品企画そのものを顧客要望に合わせて組み替えられる幅。商品カテゴリ数（50）＋カスタム導線（50）',lo:'0〜30：1カテゴリ。カスタム導線なし',mid:'31〜65：2〜5カテゴリ・部分的なカスタム対応',hi:'66〜100：6カテゴリ以上・オーダーメイドフォームとカスタムツアー明記の両方あり',basis:'E1 商品カテゴリ数（50点）: 1=10, 2〜3=20, 4〜5=35, 6以上=50\nE2 カスタム導線（50点）: オーダーメイド相談フォームあり=25, カスタムツアー作成を明記=25\n情報源: 商品一覧・問い合わせフォーム・カスタムツアーページ'},
+  {id:'F',name:'ブランド認知',color:'#3B6D11',desc:'市場で見つかりやすく、知られている状態。SNS規模（40）＋検索露出（40）＋外部掲載実績（20）',lo:'0〜20：SNS1,000未満・検索露出なし・メディア掲載なし',mid:'21〜60：SNS1,000〜10,000・検索上位1〜2回・一部メディア掲載',hi:'61〜100：SNS30,000以上・検索5キーワード上位・受賞・PR・観光メディア掲載全揃い',basis:'F1 SNS規模（40点）: 100,000以上=40, 30,000以上=30, 10,000以上=20, 1,000以上=10, 未満=0\nF2 検索露出（40点）: 5回=40, 4回=30, 3回=20, 1〜2回=10, 0=0\nF3 外部掲載（20点）: 各5点×4項目（主要メディア・受賞歴・PR記事・観光メディア）\n情報源: SNS・Google検索・PRページ・メディア掲載'},
+  {id:'G',name:'レビュー資産',color:'#E24B4A',desc:'公開レビューの蓄積量。G = 100 × log(1+R) / log(1+Rmax)。Rmaxは比較対象内の最大総レビュー件数。',lo:'0〜25：レビューほぼなし（数十件以下）',mid:'26〜65：数百〜数千件のレビュー',hi:'66〜100：数千件以上・Rmaxに近い水準',basis:'R = Google + TripAdvisor + OTA合計レビュー件数\nG = 100 × log(1+R) / log(1+Rmax)\n情報源: Google Reviews・TripAdvisor・Viator/GYG/GoWithGuide等'},
+  {id:'H',name:'収益性（推定）',color:'#BA7517',desc:'主力商品の価格帯と商品構造から見た粗利期待値。価格帯（60）＋商品構成（40）',lo:'0〜25：20,000円未満・マーケットプレイス型or低単価体験中心',mid:'26〜55：20,000〜35,000円・ガイド＋一部手配',hi:'56〜100：50,000円以上・ガイドのみor複数日カスタム',basis:'H1 主力1日商品価格帯（60点）: 70,000円以上=60, 50,000〜69,999=45, 35,000〜49,999=30, 20,000〜34,999=15, 未満=0\nH2 商品構成粗利期待値（40点）: ガイドのみ=40, ガイド+一部手配/複数日カスタム=30, 総合手配=25, マーケットプレイス=20, 低単価体験=10, 不明=20\n情報源: 公式価格表・OTA価格・主力商品ページ'},
+  {id:'I',name:'スケーラビリティ',color:'#534AB7',desc:'拡大しても運営が崩れにくい構造が見えるか。チェック5項目×20点',lo:'0〜20：個人依存。商品に統一感なし',mid:'21〜60：会社ブランドあり・一定の統一感',hi:'61〜100：商品統一感・会社ブランド主体・個人より会社が前面・組織紹介明確・複数地域同設計の5項目完備',basis:'各20点：①商品構成に統一感がある ②会社ブランド主体で販売 ③個人名より会社名が前面 ④組織・会社としての紹介が明確 ⑤複数地域・複数商品で同じ設計思想が見える\n情報源: 公式サイト・Aboutページ・商品一覧・OTA掲載構成'},
+  {id:'J',name:'チャネル支配力',color:'#1D9E75',desc:'顧客獲得経路をどれだけ自社で持っているか。自社予約（25）＋OTA媒体数（25）＋SNS頻度（25）＋B2B導線（25）',lo:'0〜25：自社予約導線なし・OTA0媒体・SNS更新なし',mid:'26〜60：自社問い合わせのみ・OTA1〜2媒体・月1〜3更新',hi:'61〜100：自社予約完結・OTA4媒体以上・週3更新以上・法人ページあり',basis:'J1 自社予約導線（25点）: 予約完結=25, 問い合わせのみ=15, なし=0\nJ2 OTA掲載媒体数（25点）: 4媒体以上=25, 3=20, 2=15, 1=10, 0=0\nJ3 SNS運用頻度（25点）: 週3回以上=25, 週1〜2=15, 月1〜3=5, ほぼなし=0\nJ4 B2B導線（25点）: 法人向けページあり=25, 窓口のみ=15, なし=0\n情報源: 公式サイト・OTA・SNS・法人向けページ'},
+  {id:'L',name:'規模（proxy）',color:'#888780',desc:'公開情報から推定する事業規模。商品数（30）＋総レビュー件数対数補正（40）＋掲載媒体数（30）',lo:'0〜25：商品数5以下・レビューほぼなし・媒体1以下',mid:'26〜60：商品数6〜50・レビュー数百〜数千・媒体2〜3',hi:'61〜100：商品数51以上・レビュー数千件以上・媒体4以上',basis:'L1 商品数（30点）: 51以上=30, 21〜50=20, 6〜20=10, 1〜5=5\nL2 総レビュー件数（40点）: 対数補正 40×log(1+R)/log(1+Rmax)\nL3 掲載媒体数（30点）: 4媒体以上=30, 3=20, 2=15, 1=10, 0=0\n情報源: 商品一覧・レビュー件数・OTA掲載数'},
+  {id:'O',name:'主力商品一致度',color:'#D85A30',desc:'See Jayの主力（英語プライベートツアーの現場運営・ガイド手配）と真正面で競合するか。条件分岐で固定採点。',lo:'0〜25：主力市場が別・日本インバウンドが主でない・ガイド/プライベートが主力でない',mid:'26〜75：英語ツアーを扱うが主力が別商品・体験商品・OTA商品が主',hi:'76〜100：英語プライベートツアー中心・ガイド手配主体・B2B旅行会社受託・日本国内向けの全条件充足',basis:'100点: 英語プライベートツアー中心かつガイド手配主体かつB2B受託主かつ日本国内向け（4条件全て）\n75点: 上記4条件のうち3つ\n50点: 英語プライベートツアー扱う・ガイドが主要価値・カスタムあり・日本向けのうち2つ\n25点: 日本観光扱うが主力が別商品 or 体験・OTA商品が主 or 総合手配でガイドは一部\n0点: 主力市場が別 or 日本インバウンドが主でない\n情報源: M商品カテゴリ・N事業モデル・公式サイト'},
+],
+comps:[
+  {id:1,name:'JGA',cat:'ガイド会社',M:'半日〜1日プライベートツアー',N:'ハイブリッド型',
+   A:100,B:82,C:80,D:60,E:75,F:60,G:85,H:55,I:80,J:75,L:90,O:100,
+   memo:'登録1,000名・全国18エリア以上・6言語以上・400超商品・月1,500件・TripAdvisor Best of Best 2025・旅行業登録済み。供給規模・品質・B2B対応で業界トップ。SNS弱い・直前対応は硬直気味',
+   src:'j-g-a.org, viator.com, instagram.com/japanguideagency'},
+  {id:2,name:'MagicalTrip',cat:'OTA/プラットフォーム',M:'体験商品中心',N:'B2C直販型',
+   A:70,B:88,C:60,D:40,E:75,F:55,G:100,H:30,I:80,J:70,L:85,O:25,
+   memo:'13都市・TripAdvisor Japan No.1 2年連続・総レビュー20,000件超（2025年）・旅行会社50社超提携。体験・バーホッピングが主力で主力商品一致度低い。価格帯低め（H低）',
+   src:'magical-trip.com, prweb.com/releases/magicaltrip2025, instagram.com/magicaltripcom'},
+  {id:3,name:'GoWithGuide',cat:'OTA/プラットフォーム',M:'マーケットプレイス型',N:'マーケットプレイス型',
+   A:70,B:30,C:20,D:80,E:50,F:35,G:55,H:35,I:20,J:55,L:50,O:50,
+   memo:'120カ国・500都市・登録ガイド2,057名（グローバル）。マーケットプレイス型ゆえ品質ばらつき・返金トラブル事例あり（TripAdvisor）・B2B体制なし・スケーラビリティ低',
+   src:'gowithguide.com, tripadvisor.com, timetorv.com/gowithguide-review-japan'},
+  {id:4,name:'Fulfilling',cat:'OTA/プラットフォーム',M:'マーケットプレイス型',N:'マーケットプレイス型',
+   A:20,B:10,C:0,D:20,E:10,F:5,G:5,H:20,I:20,J:10,L:5,O:50,
+   memo:'2018年〜運営。軽量マッチング型。公開データが極めて乏しく全軸で証拠ベース採点すると最低水準。現時点での競争圧は限定的',
+   src:'fulfilling.jp（公開情報極めて少ない）'},
+  {id:5,name:'JTBGMT',cat:'総合旅行会社・DMC',M:'パッケージツアー',N:'総合旅行手配型',
+   A:100,B:88,C:100,D:20,E:85,F:80,G:90,H:75,I:100,J:85,L:95,O:25,
+   memo:'60年・延べ800万人・300商品超・Travelife認証・JTBグループDMC。間接競合。柔軟性最低（固定パッケージ中心）・主力商品一致度低（パッケージツアーが主）',
+   src:'jtbgmt.com, sunrise-tours.jp'},
+  {id:6,name:'Viator',cat:'OTA/プラットフォーム',M:'マーケットプレイス型',N:'OTA依存型',
+   A:100,B:35,C:40,D:55,E:20,F:100,G:100,H:20,I:30,J:50,L:100,O:0,
+   memo:'TripAdvisor傘下・30万商品超・月3,500万訪問。競合ではなく販路として活用すべきプラットフォーム。主力商品一致度0（自社ガイド・手配を持たないプラットフォーム）',
+   src:'viator.com, skift.com'},
+  {id:7,name:'フリーランスガイド',cat:'フリーランスガイド',M:'ガイドのみ',N:'B2C直販型',
+   A:10,B:10,C:10,D:100,E:20,F:10,G:10,H:55,I:10,J:15,L:10,O:75,
+   memo:'2018年法改正で無資格有償が可能に。参入障壁最低。D柔軟性は構造上最高。ただしB2B体制・ブランド・スケーラビリティすべてゼロ。主力商品一致度は高い（英語ガイド中心）',
+   src:'観光庁2018年改正'},
+  {id:8,name:'See Jay（自社）',cat:'自社',M:'半日〜1日プライベートツアー',N:'B2B受託型',
+   A:22,B:55,C:80,D:80,E:35,F:10,G:5,H:55,I:40,J:20,L:15,O:100,
+   memo:'ガイド約10名・月50件・売上8割B2B。強み：C B2B対応力80・D オペ柔軟性80・O主力商品一致度100。課題：F ブランド認知10・G レビュー資産5・L規模15が急務。手配業取得後はA・Eが大幅改善見込み',
+   src:'社内情報・代表提供データ'},
+],
+mkts:[
+  {id:901,name:'世界旅行市場 総経済規模',val:1614600,type:'TAM',parentId:'',status:'confirmed',sj:'',memo:'US$10.9兆（約1,614,600億円・1USD=148円換算）。旅客輸送・宿泊・飲食・体験等を含む旅行産業全体',expanded:true},
+  {id:902,name:'国際観光収入',val:236800,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'US$1.6兆（約236,800億円換算）。世界の国際観光による収入',expanded:false},
+  {id:903,name:'観光輸出総額（旅客輸送含む）',val:281200,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'US$1.9兆（約281,200億円換算）',expanded:false},
+  {id:904,name:'日本向け需要市場（国内実消費）',val:94600,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'9.46兆円。2025年訪日外国人旅行消費額（観光庁・JNTO）',expanded:true},
+  {id:101,name:'英語コア市場 総旅行消費',val:24326,type:'TAM',parentId:904,status:'confirmed',sj:'',memo:'米・豪・英・加・シンガポール・フィリピン・インド 2025年（観光庁・JNTO）',expanded:true},
+  {id:102,name:'英語コア市場 娯楽等サービス費',val:1252,type:'SAM',parentId:101,status:'confirmed',sj:'',memo:'観光庁定義の娯楽等サービス費。現地ツアー・ガイドを含む費目',expanded:true},
+  {id:103,name:'英語プライベートツアー市場',val:560,type:'SOM',parentId:102,status:'estimated',sj:'target',memo:'保守310〜強気560億円・基準438億円。2025年推計。成長率+15.8%/年',expanded:true},
+  {id:104,name:'プライベートツアー詳細（要調査）',val:0,type:'sub',parentId:103,status:'todo',sj:'current',memo:'要調査：都市別・エリア別・言語別の内訳',expanded:false},
+  {id:105,name:'手配業者市場（要調査）',val:0,type:'sub',parentId:102,status:'todo',sj:'target',memo:'要調査：バス・ホテル手配の市場規模',expanded:false},
+],
+nextCompId:200,nextMktId:1000,expandedIds:[901,904,101,102,103]
 };
-const TYPE_COLORS={TAM:'#534AB7',SAM:'#1D9E75',SOM:'#D85A30',sub:'#888780'};
-const TYPE_LBL={TAM:'TAM',SAM:'SAM',SOM:'実戦',sub:'サブ'};
-const STATUS_LBL={confirmed:'確定',estimated:'推計',todo:'要調査'};
-const STATUS_COL={confirmed:'#1D9E75',estimated:'#BA7517',todo:'#888780'};
 
-const DEFAULT = {
-  axes:[
-    {id:'A',name:'供給規模',color:'#1D9E75',desc:'日本国内で安定的に動かせるガイド数・催行件数。欠員時の代替供給力も含む。',lo:'0〜30：ガイド10名未満・月50件未満。代替困難',mid:'31〜65：10〜300名程度・安定供給だが地域制限あり',hi:'66〜100：300名超・全国対応・常時代替可能',basis:'判断指標：公開登録ガイド数・年間催行件数・対応エリア数・代替手配速度'},
-    {id:'B',name:'品質担保力',color:'#534AB7',desc:'組織として品質を再現・管理できるか。採用基準・教育・評価・トラブル対応体制の整備度。',lo:'0〜30：品質管理なし。個人依存',mid:'31〜65：一定の採用基準・事後レビュー収集あり',hi:'66〜100：採用・研修・評価・トラブル対応が組織として機能',basis:'判断指標：採用基準の明文化・教育プログラム・レビュー件数と評点・トラブル対応実績'},
-    {id:'C',name:'B2B対応力',color:'#D85A30',desc:'旅行会社を継続顧客にできる体制か。書面契約・複数案件同時管理・請求処理・緊急連絡体制の整備度。',lo:'0〜30：B2C専用または個人向けのみ',mid:'31〜65：B2B実績あるが体制は薄い',hi:'66〜100：旅行会社との長期契約・緊急対応体制が整備済み',basis:'判断指標：旅行会社提携数・書面契約の有無・旅行業登録種別・緊急時連絡体制'},
-    {id:'D',name:'柔軟性',color:'#BA7517',desc:'旅行会社・旅行者の個別要望に対する対応速度と変更受容力。構造的柔軟性と運用的柔軟性の両面で評価。',lo:'0〜30：固定プログラムのみ。変更不可',mid:'31〜65：一定のカスタム対応可能だが数日前締切',hi:'66〜100：当日・直前変更対応可。完全カスタム行程対応',basis:'構造的柔軟性：固定プログラム比率・カスタマイズ可否\n運用的柔軟性：担当者の即応権限・直前変更時の代替手配速度'},
-    {id:'E',name:'サービス範囲',color:'#185FA5',desc:'ガイドのみか、バス・ホテル・入場券等の手配まで含む総合対応が可能か。旅行業資格の種別も評価に含む。',lo:'0〜30：ガイドのみ。移動・宿泊・入場券等の手配は対象外',mid:'31〜65：ガイド＋一部手配（送迎・入場券など限定的）',hi:'66〜100：ガイド＋バス・ホテル・航空等の総合手配が可能',basis:'判断指標：提供サービス一覧・旅行業登録種別・提携サプライヤー数'},
-    {id:'F',name:'ブランド/レビュー資産',color:'#639922',desc:'旅行者・旅行会社が発注判断に使えるレビュー数・業界認知度・受賞実績の厚み。',lo:'0〜30：レビューほぼなし。業界認知度低い',mid:'31〜65：数百件のレビュー・一定の業界認知',hi:'66〜100：数千件以上のレビュー・受賞実績・業界認知度高',basis:'判断指標：Viator/TripAdvisor/GYG等のレビュー総件数と平均評点・受賞歴・業界メディア掲載数'},
-  ],
-  comps:[
-    {id:1,name:'JGA',cat:'ガイド会社',A:95,B:82,C:88,D:35,E:32,F:82,memo:'登録1,000名・全国47都道府県・月1,500件・TripAdvisor No.1・DMC機能・旅行業登録済み',src:'j-g-a.org'},
-    {id:2,name:'MagicalTrip',cat:'OTA/プラットフォーム',A:58,B:65,C:55,D:60,E:22,F:78,memo:'累計466名・旅行会社50社超提携・レビュー5,600件超。B2C起点でB2B拡張中',src:'magical-trip.com'},
-    {id:3,name:'GoWithGuide',cat:'OTA/プラットフォーム',A:48,B:25,C:30,D:80,E:28,F:60,memo:'登録2,057名（グローバル全体）・利用者167,684名。柔軟性最高だが品質ばらつきが弱点',src:'gowithguide.com'},
-    {id:4,name:'Fulfilling',cat:'OTA/プラットフォーム',A:18,B:20,C:25,D:62,E:18,F:15,memo:'2018年〜運営。軽量マッチング型。現時点では脅威は限定的',src:'fulfilling.jp'},
-    {id:5,name:'JTBGMT',cat:'総合旅行会社・DMC',A:98,B:88,C:98,D:20,E:98,F:95,memo:'60年以上・延べ800万人・300商品超・Travelife最上位認証。間接競合',src:'jtbgmt.com'},
-    {id:6,name:'Viator',cat:'OTA/プラットフォーム',A:95,B:35,C:42,D:55,E:20,F:98,memo:'TripAdvisor傘下・30万商品超。競合ではなく販路として活用する視点が重要',src:'viator.com'},
-    {id:7,name:'フリーランスガイド',cat:'フリーランスガイド',A:8,B:10,C:12,D:90,E:10,F:12,memo:'2018年法改正で無資格有償が可能に。参入障壁低い',src:'観光庁'},
-    {id:8,name:'See Jay（自社）',cat:'自社',A:22,B:55,C:70,D:85,E:30,F:18,memo:'強み：D柔軟性85・C B2B対応力70。課題：A供給規模22・F ブランド18。手配業取得後はEが30→65程度へ上昇見込み',src:'社内情報'},
-  ],
-  mkts:[
-    {id:901,name:'世界旅行市場 総経済規模',val:1614600,type:'TAM',parentId:'',status:'confirmed',sj:'',memo:'US$10.9兆（約1,614,600億円・1USD=148円換算）',expanded:true},
-    {id:902,name:'国際観光収入',val:236800,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'US$1.6兆（約236,800億円換算）。世界の国際観光による収入',expanded:false},
-    {id:903,name:'観光輸出総額（旅客輸送含む）',val:281200,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'US$1.9兆（約281,200億円換算）',expanded:false},
-    {id:904,name:'日本向け需要市場（国内実消費）',val:94600,type:'SAM',parentId:901,status:'confirmed',sj:'',memo:'9.46兆円。2025年訪日外国人旅行消費額（観光庁・JNTO）',expanded:true},
-    {id:101,name:'英語コア市場 総旅行消費',val:24326,type:'TAM',parentId:904,status:'confirmed',sj:'',memo:'米・豪・英・加・シンガポール・フィリピン・インド 2025年（観光庁・JNTO）',expanded:true},
-    {id:102,name:'英語コア市場 娯楽等サービス費',val:1252,type:'SAM',parentId:101,status:'confirmed',sj:'',memo:'観光庁定義の娯楽等サービス費。現地ツアー・ガイドを含む費目',expanded:true},
-    {id:103,name:'英語プライベートツアー市場',val:560,type:'SOM',parentId:102,status:'estimated',sj:'target',memo:'保守310〜強気560億円・基準438億円。2025年推計値。成長率+15.8%/年',expanded:true},
-    {id:104,name:'プライベートツアー詳細（要調査）',val:0,type:'sub',parentId:103,status:'todo',sj:'current',memo:'要調査：都市別・エリア別・言語別の内訳',expanded:false},
-    {id:105,name:'手配業者市場（要調査）',val:0,type:'sub',parentId:102,status:'todo',sj:'target',memo:'要調査：バス・ホテル手配の市場規模',expanded:false},
-  ],
-  nextCompId:200,
-  nextMktId:1000,
-  expandedIds:[901,904,101,102,103]
-};
-
-// ── STATE ────────────────────────────────────────────────────
-let state;
-function loadState(){
-  try{
-    const s=localStorage.getItem('seejay-v1');
-    state=s?JSON.parse(s):JSON.parse(JSON.stringify(DEFAULT));
-  }catch(e){state=JSON.parse(JSON.stringify(DEFAULT));}
-  if(!state.expandedIds) state.expandedIds=[901,904,101,102,103];
+// ── STATE ───────────────────────────────────────────────────
+let S;
+function loadS(){
+  try{const r=localStorage.getItem('sj-v2');S=r?JSON.parse(r):JSON.parse(JSON.stringify(DEFAULT));}
+  catch(e){S=JSON.parse(JSON.stringify(DEFAULT));}
+  if(!S.expandedIds)S.expandedIds=[901,904,101,102,103];
 }
-function saveState(){
-  try{
-    localStorage.setItem('seejay-v1',JSON.stringify(state));
-    const b=document.getElementById('save-badge');
-    b.style.display='inline';
-    setTimeout(()=>b.style.display='none',2000);
-  }catch(e){}
+function saveS(){
+  try{localStorage.setItem('sj-v2',JSON.stringify(S));const b=document.getElementById('saved');b.style.display='inline';setTimeout(()=>b.style.display='none',2000);}
+  catch(e){}
 }
 
-// ── NAV ──────────────────────────────────────────────────────
-let currentView='map';
-function goTo(v){
-  document.querySelectorAll('.view').forEach(el=>el.classList.remove('active'));
-  document.querySelectorAll('.nav-btn').forEach(el=>el.classList.remove('active'));
+// ── NAV ─────────────────────────────────────────────────────
+let cv='map';
+function go(v){
+  document.querySelectorAll('.view').forEach(e=>e.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(e=>e.classList.remove('active'));
   document.getElementById('view-'+v).classList.add('active');
   document.querySelectorAll('.nav-btn')[['map','scores','axes','market','summary'].indexOf(v)].classList.add('active');
-  currentView=v;
+  cv=v;
   if(v==='map')setTimeout(renderMap,50);
   if(v==='scores')renderScores();
   if(v==='axes')renderAxes();
@@ -363,43 +355,45 @@ function goTo(v){
   if(v==='summary')renderSummary();
 }
 
-// ── TOAST ────────────────────────────────────────────────────
-function toast(msg){
-  const t=document.getElementById('toast');
-  t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2200);
-}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 
-// ── MAP ──────────────────────────────────────────────────────
-let xAxisId='A',yAxisId='C',filterCat='すべて';
+// ── MAP ─────────────────────────────────────────────────────
+let xId='O',yId='C',fM='すべて',fN='すべて',fCat='すべて';
 
-function buildMapSelects(){
-  const build=(id,cur)=>{
-    const el=document.getElementById(id);
-    el.innerHTML=state.axes.map(a=>`<option value="${a.id}">${a.id} ${a.name}</option>`).join('');
-    el.value=cur;
-  };
-  build('xAx',xAxisId);build('yAx',yAxisId);
-  document.getElementById('xAx').onchange=e=>{xAxisId=e.target.value;renderMap();};
-  document.getElementById('yAx').onchange=e=>{yAxisId=e.target.value;renderMap();};
-  const fc=document.getElementById('catF');
-  fc.innerHTML=['すべて',...Object.keys(CAT_COLORS)].map(c=>`<option>${c}</option>`).join('');
-  fc.value=filterCat;
-  fc.onchange=e=>{filterCat=e.target.value;renderMap();};
+function buildMapSel(){
+  const bld=(id,cur)=>{const el=document.getElementById(id);el.innerHTML=S.axes.map(a=>`<option value="${a.id}">${a.id} ${a.name}</option>`).join('');el.value=cur;};
+  bld('xAx',xId);bld('yAx',yId);
+  document.getElementById('xAx').onchange=e=>{xId=e.target.value;renderMap();};
+  document.getElementById('yAx').onchange=e=>{yId=e.target.value;renderMap();};
+  // M filter
+  const mVals=['すべて',...new Set(S.comps.map(c=>c.M||'').filter(Boolean))];
+  document.getElementById('fM').innerHTML=mVals.map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('fM').value=fM;
+  document.getElementById('fM').onchange=e=>{fM=e.target.value;renderMap();};
+  // N filter
+  const nVals=['すべて',...new Set(S.comps.map(c=>c.N||'').filter(Boolean))];
+  document.getElementById('fN').innerHTML=nVals.map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('fN').value=fN;
+  document.getElementById('fN').onchange=e=>{fN=e.target.value;renderMap();};
+  // cat filter
+  const cVals=['すべて',...Object.keys(CC)];
+  document.getElementById('fCat').innerHTML=cVals.map(v=>`<option>${v}</option>`).join('');
+  document.getElementById('fCat').value=fCat;
+  document.getElementById('fCat').onchange=e=>{fCat=e.target.value;renderMap();};
 }
 
 function renderMap(){
-  const wrap=document.getElementById('map-wrap');
-  const canvas=document.getElementById('map-canvas');
+  const wrap=document.getElementById('mwrap');
+  const canvas=document.getElementById('mc');
   const W=wrap.clientWidth,H=wrap.clientHeight;
   if(!W||!H)return;
   canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;
   canvas.style.width=W+'px';canvas.style.height=H+'px';
   const ctx=canvas.getContext('2d');ctx.scale(devicePixelRatio,devicePixelRatio);
-  const PAD={l:48,r:16,t:20,b:44};
+  const PAD={l:50,r:16,t:20,b:46};
   const pw=W-PAD.l-PAD.r,ph=H-PAD.t-PAD.b;
-  const xA=state.axes.find(a=>a.id===xAxisId)||state.axes[0];
-  const yA=state.axes.find(a=>a.id===yAxisId)||state.axes[1];
+  const xA=S.axes.find(a=>a.id===xId)||S.axes[0];
+  const yA=S.axes.find(a=>a.id===yId)||S.axes[0];
   const isDark=matchMedia('(prefers-color-scheme:dark)').matches;
   const gc=isDark?'rgba(255,255,255,0.07)':'rgba(0,0,0,0.06)';
   const ac=isDark?'rgba(255,255,255,0.2)':'rgba(0,0,0,0.18)';
@@ -415,15 +409,20 @@ function renderMap(){
   ctx.beginPath();ctx.moveTo(PAD.l,PAD.t);ctx.lineTo(PAD.l,PAD.t+ph);ctx.stroke();
   ctx.beginPath();ctx.moveTo(PAD.l,PAD.t+ph);ctx.lineTo(PAD.l+pw,PAD.t+ph);ctx.stroke();
   ctx.fillStyle=tc;ctx.font='11px sans-serif';
-  ctx.textAlign='center';ctx.fillText(xA.name,PAD.l+pw/2,PAD.t+ph+30);
+  ctx.textAlign='center';ctx.fillText(xA.name,PAD.l+pw/2,PAD.t+ph+32);
   ctx.textAlign='left';ctx.fillText('低',PAD.l,PAD.t+ph+14);ctx.fillText('高',PAD.l+pw-10,PAD.t+ph+14);
-  ctx.save();ctx.translate(14,PAD.t+ph/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.fillText(yA.name,0,0);ctx.restore();
+  ctx.save();ctx.translate(15,PAD.t+ph/2);ctx.rotate(-Math.PI/2);ctx.textAlign='center';ctx.fillText(yA.name,0,0);ctx.restore();
   ctx.textAlign='start';ctx.fillText('高',2,PAD.t+6);ctx.fillText('低',2,PAD.t+ph);
-  const filtered=filterCat==='すべて'?state.comps:state.comps.filter(c=>c.cat===filterCat);
+  const filtered=S.comps.filter(c=>{
+    if(fM!=='すべて'&&c.M!==fM)return false;
+    if(fN!=='すべて'&&c.N!==fN)return false;
+    if(fCat!=='すべて'&&c.cat!==fCat)return false;
+    return true;
+  });
   filtered.forEach(c=>{
-    const xv=c[xAxisId]||50,yv=c[yAxisId]||50;
+    const xv=c[xId]||50,yv=c[yId]||50;
     const x=PAD.l+pw*xv/100,y=PAD.t+ph*(1-yv/100);
-    const color=CAT_COLORS[c.cat]||'#888';
+    const color=CC[c.cat]||'#888';
     const r=c.cat==='自社'?10:7;
     ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
     ctx.fillStyle=color+(c.cat==='自社'?'ff':'cc');ctx.fill();
@@ -432,299 +431,220 @@ function renderMap(){
     ctx.font=c.cat==='自社'?'700 11px sans-serif':'11px sans-serif';
     ctx.textAlign='left';ctx.fillText(c.name,x+r+4,y+4);
   });
-  document.getElementById('legend').innerHTML=Object.entries(CAT_COLORS).map(([cat,col])=>{
-    const n=state.comps.filter(c=>c.cat===cat).length;
-    return n?`<div class="legend-item"><div class="legend-dot" style="background:${col}"></div>${cat}（${n}）</div>`:'';
-  }).join('');
+  // legend — show filter state
+  let legItems=[];
+  if(fM==='すべて'&&fN==='すべて'){
+    legItems=Object.entries(CC).map(([cat,col])=>{
+      const n=S.comps.filter(c=>c.cat===cat).length;
+      return n?`<div class="li"><div class="ld" style="background:${col}"></div>${cat}（${n}）</div>`:'';
+    });
+  } else {
+    if(fM!=='すべて'){const col=MC_COL[fM]||'#888';legItems.push(`<div class="li"><div class="ld" style="background:${col}"></div>M: ${fM}（${filtered.length}社）</div>`);}
+    if(fN!=='すべて'){const col=NC_COL[fN]||'#888';legItems.push(`<div class="li"><div class="ld" style="background:${col}"></div>N: ${fN}（${filtered.length}社）</div>`);}
+  }
+  document.getElementById('legend').innerHTML=legItems.join('');
   canvas.onclick=e=>{
     const rect=canvas.getBoundingClientRect();
     const mx=e.clientX-rect.left,my=e.clientY-rect.top;
     let hit=null;
     filtered.forEach(c=>{
-      const x=PAD.l+pw*(c[xAxisId]||50)/100,y=PAD.t+ph*(1-(c[yAxisId]||50)/100);
+      const x=PAD.l+pw*(c[xId]||50)/100,y=PAD.t+ph*(1-(c[yId]||50)/100);
       if(Math.sqrt((mx-x)**2+(my-y)**2)<14)hit=c;
     });
     if(hit)openCompModal(hit);
   };
 }
 
-function resetMap(){xAxisId='A';yAxisId='C';filterCat='すべて';buildMapSelects();renderMap();}
+function resetMap(){xId='O';yId='C';fM='すべて';fN='すべて';fCat='すべて';buildMapSel();renderMap();}
 
-// ── COMP MODAL ────────────────────────────────────────────────
-let editCompId=null;
-
+// ── COMP MODAL ───────────────────────────────────────────────
+let editCId=null;
 function openCompModal(c=null){
-  editCompId=c?c.id:null;
-  document.getElementById('comp-modal-title').textContent=c?c.name+' を編集':'競合を追加';
+  editCId=c?c.id:null;
+  document.getElementById('cm-title').textContent=c?c.name+' を編集':'競合を追加';
   document.getElementById('cm-name').value=c?c.name:'';
   document.getElementById('cm-cat').value=c?c.cat:'ガイド会社';
+  document.getElementById('cm-M').value=c?c.M||'半日〜1日プライベートツアー':'半日〜1日プライベートツアー';
+  document.getElementById('cm-N').value=c?c.N||'B2B受託型':'B2B受託型';
   document.getElementById('cm-memo').value=c?c.memo||'':'';
   document.getElementById('cm-src').value=c?c.src||'':'';
   document.getElementById('cm-del').style.display=c?'inline-block':'none';
-  // sliders
-  const sliders=document.getElementById('cm-sliders');
-  sliders.innerHTML=state.axes.map(a=>{
-    const v=c?c[a.id]||50:50;
-    return `<div class="field"><label>${a.id} ${a.name}</label>
-      <input type="range" min="0" max="100" value="${v}" oninput="document.getElementById('csv-${a.id}').textContent=this.value" id="cs-${a.id}">
-      <span class="slider-val" id="csv-${a.id}">${v}</span></div>`;
-  }).join('');
-  document.getElementById('comp-modal').classList.add('open');
+  const sl=document.getElementById('cm-sliders');
+  sl.innerHTML=S.axes.map(a=>{const v=c?c[a.id]||0:50;return `<div class="f"><label>${a.id} ${a.name}</label><input type="range" min="0" max="100" value="${v}" oninput="document.getElementById('sv-${a.id}').textContent=this.value" id="sl-${a.id}"><span class="sv" id="sv-${a.id}">${v}</span></div>`;}).join('');
+  document.getElementById('cm-modal').classList.add('open');
 }
-
-function closeCompModal(){document.getElementById('comp-modal').classList.remove('open');editCompId=null;}
-
+function closeCompModal(){document.getElementById('cm-modal').classList.remove('open');editCId=null;}
 function saveComp(){
   const name=document.getElementById('cm-name').value.trim();
   if(!name)return toast('名前を入力してください');
-  const entry={id:editCompId||state.nextCompId++,name,cat:document.getElementById('cm-cat').value,
-    memo:document.getElementById('cm-memo').value,src:document.getElementById('cm-src').value};
-  state.axes.forEach(a=>{const el=document.getElementById('cs-'+a.id);if(el)entry[a.id]=parseInt(el.value);});
-  if(editCompId){const i=state.comps.findIndex(c=>c.id===editCompId);if(i>=0)state.comps[i]=entry;}
-  else state.comps.push(entry);
-  saveState();closeCompModal();
-  renderMap();if(currentView==='scores')renderScores();if(currentView==='summary')renderSummary();
-  toast('保存しました');
+  const entry={id:editCId||S.nextCompId++,name,cat:document.getElementById('cm-cat').value,M:document.getElementById('cm-M').value,N:document.getElementById('cm-N').value,memo:document.getElementById('cm-memo').value,src:document.getElementById('cm-src').value};
+  S.axes.forEach(a=>{const el=document.getElementById('sl-'+a.id);if(el)entry[a.id]=parseInt(el.value);});
+  if(editCId){const i=S.comps.findIndex(c=>c.id===editCId);if(i>=0)S.comps[i]=entry;}
+  else S.comps.push(entry);
+  saveS();closeCompModal();buildMapSel();renderMap();if(cv==='scores')renderScores();if(cv==='summary')renderSummary();toast('保存しました');
 }
+function delComp(){if(!editCId)return;S.comps=S.comps.filter(c=>c.id!==editCId);saveS();closeCompModal();buildMapSel();renderMap();renderScores();renderSummary();toast('削除しました');}
 
-function delComp(){
-  if(!editCompId)return;
-  state.comps=state.comps.filter(c=>c.id!==editCompId);
-  saveState();closeCompModal();renderMap();renderScores();renderSummary();toast('削除しました');
-}
-
-// ── SCORES ────────────────────────────────────────────────────
-function tot(c){const v=state.axes.map(a=>c[a.id]||0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0;}
-
+// ── SCORES ───────────────────────────────────────────────────
+function tot(c){const v=S.axes.map(a=>c[a.id]||0);return v.length?Math.round(v.reduce((a,b)=>a+b,0)/v.length):0;}
 function renderScores(){
   const catF=document.getElementById('sc-cat').value;
   const sortF=document.getElementById('sc-sort').value;
-  let list=[...state.comps].filter(c=>catF==='すべて'||c.cat===catF);
+  let list=[...S.comps].filter(c=>catF==='すべて'||c.cat===catF);
   if(sortF==='total')list.sort((a,b)=>tot(b)-tot(a));
+  else if(sortF==='O')list.sort((a,b)=>(b.O||0)-(a.O||0));
   else list.sort((a,b)=>a.name.localeCompare(b.name,'ja'));
   document.getElementById('sc-list').innerHTML=list.map(c=>{
-    const t=tot(c),color=CAT_COLORS[c.cat]||'#888';
-    return `<div class="sc-item${c.cat==='自社'?' is-self':''}">
-      <div class="sc-head" onclick="toggleScore(${c.id})">
-        <span class="sc-name">${c.name}</span>
-        <span class="tag" style="border:1px solid ${color};color:${color}">${c.cat}</span>
-        <span class="sc-total" style="color:${color}">${t}点</span>
-        <span style="font-size:11px;color:var(--text3);margin-left:4px">▼</span>
+    const t=tot(c),color=CC[c.cat]||'#888';
+    const mc=MC_COL[c.M]||'#888';const nc=NC_COL[c.N]||'#888';
+    return `<div class="sc-item${c.cat==='自社'?' self':''}">
+      <div class="sc-hd" onclick="toggleSc(${c.id})">
+        <span class="sc-nm">${c.name}</span>
+        <span class="tag" style="color:${color};border-color:${color}">${c.cat}</span>
+        <span class="sc-tot" style="color:${color}">${t}pt</span>
+        <span style="font-size:10px;color:var(--text3);margin-left:3px">▼</span>
       </div>
-      <div class="sc-body" id="scb-${c.id}">
-        ${state.axes.map(a=>`
-          <div class="bar-row">
-            <span class="bar-label">${a.id} ${a.name}</span>
-            <div class="bar-track"><div class="bar-fill" style="width:${c[a.id]||0}%;background:${color}"></div></div>
-            <span class="bar-val" style="color:${color}">${c[a.id]||0}</span>
-          </div>`).join('')}
-        ${c.memo?`<div class="sc-memo">${c.memo}</div>`:''}
-        ${c.src?`<div class="sc-src">出典：${c.src}</div>`:''}
-        <div class="btn-row" style="margin-top:10px">
-          <button class="btn btn-sm" onclick="openCompModal(state.comps.find(x=>x.id==${c.id}))">編集</button>
+      <div class="sc-bd" id="scb-${c.id}">
+        <div class="tag-row">
+          <span class="tag" style="color:${mc};border-color:${mc}">M: ${c.M||'未設定'}</span>
+          <span class="tag" style="color:${nc};border-color:${nc}">N: ${c.N||'未設定'}</span>
         </div>
+        ${S.axes.map(a=>`<div class="bar-r"><span class="bar-l">${a.id} ${a.name}</span><div class="bar-t"><div class="bar-f" style="width:${c[a.id]||0}%;background:${color}"></div></div><span class="bar-v" style="color:${color}">${c[a.id]||0}</span></div>`).join('')}
+        ${c.memo?`<div class="memo">${c.memo}</div>`:''}
+        ${c.src?`<div class="src">出典：${c.src}</div>`:''}
+        <div class="br" style="margin-top:8px"><button onclick="openCompModal(S.comps.find(x=>x.id==${c.id}))">編集</button></div>
       </div>
     </div>`;
   }).join('');
 }
+function toggleSc(id){const el=document.getElementById('scb-'+id);if(!el)return;const o=el.classList.contains('open');document.querySelectorAll('.sc-bd').forEach(b=>b.classList.remove('open'));if(!o)el.classList.add('open');}
 
-function toggleScore(id){
-  const el=document.getElementById('scb-'+id);if(!el)return;
-  const open=el.classList.contains('open');
-  document.querySelectorAll('.sc-body').forEach(b=>b.classList.remove('open'));
-  if(!open)el.classList.add('open');
-}
-
-// ── AXES ──────────────────────────────────────────────────────
-let editAxisId=null;
-
+// ── AXES ─────────────────────────────────────────────────────
+let editAId=null;
 function renderAxes(){
-  document.getElementById('ax-list').innerHTML=state.axes.map(a=>`
+  document.getElementById('ax-list').innerHTML=S.axes.map(a=>`
     <div class="ax-card">
-      <div class="ax-head">
+      <div class="ax-hd">
         <span class="ax-id" style="border:1px solid ${a.color};color:${a.color}">${a.id}</span>
-        <span class="ax-name">${a.name}</span>
-        <button class="btn btn-sm" style="margin-left:auto" onclick="openAxisModal('${a.id}')">編集</button>
+        <span class="ax-nm">${a.name}</span>
+        <button style="margin-left:auto" onclick="openAxisModal('${a.id}')">編集</button>
       </div>
-      <div class="ax-desc">${a.desc}</div>
+      <div class="ax-ds">${a.desc}</div>
       <div class="bands">
-        <div class="band band-lo"><div class="band-label">低（0〜30）</div>${a.lo}</div>
-        <div class="band band-mid"><div class="band-label">中（31〜65）</div>${a.mid}</div>
-        <div class="band band-hi"><div class="band-label">高（66〜100）</div>${a.hi}</div>
+        <div class="band blo"><div class="bl">低（0〜30）</div>${a.lo}</div>
+        <div class="band bmi"><div class="bl">中（31〜65）</div>${a.mid}</div>
+        <div class="band bhi"><div class="bl">高（66〜100）</div>${a.hi}</div>
       </div>
-      <div class="ax-basis">${a.basis}</div>
+      <div class="ax-bs">${a.basis}</div>
     </div>`).join('');
 }
-
 function openAxisModal(id=null){
-  editAxisId=id;
-  const a=id?state.axes.find(x=>x.id===id):null;
-  document.getElementById('axis-modal-title').textContent=a?a.name+' を編集':'軸を追加';
-  document.getElementById('am-id').value=a?a.id:'';
-  document.getElementById('am-name').value=a?a.name:'';
-  document.getElementById('am-desc').value=a?a.desc:'';
-  document.getElementById('am-lo').value=a?a.lo:'';
-  document.getElementById('am-mid').value=a?a.mid:'';
-  document.getElementById('am-hi').value=a?a.hi:'';
-  document.getElementById('am-basis').value=a?a.basis:'';
+  editAId=id;const a=id?S.axes.find(x=>x.id===id):null;
+  document.getElementById('am-title').textContent=a?a.name+' を編集':'軸を追加';
+  document.getElementById('am-id').value=a?a.id:'';document.getElementById('am-name').value=a?a.name:'';document.getElementById('am-desc').value=a?a.desc:'';document.getElementById('am-lo').value=a?a.lo:'';document.getElementById('am-mid').value=a?a.mid:'';document.getElementById('am-hi').value=a?a.hi:'';document.getElementById('am-basis').value=a?a.basis:'';
   document.getElementById('am-del').style.display=a?'inline-block':'none';
-  document.getElementById('axis-modal').classList.add('open');
+  document.getElementById('am-modal').classList.add('open');
 }
-
-function closeAxisModal(){document.getElementById('axis-modal').classList.remove('open');editAxisId=null;}
-
+function closeAxisModal(){document.getElementById('am-modal').classList.remove('open');editAId=null;}
 function saveAxis(){
   const id=document.getElementById('am-id').value.trim().toUpperCase();
   const name=document.getElementById('am-name').value.trim();
-  if(!id||!name)return toast('IDと軸名を入力してください');
-  const entry={id,name,color:'#888780',desc:document.getElementById('am-desc').value,
-    lo:document.getElementById('am-lo').value,mid:document.getElementById('am-mid').value,
-    hi:document.getElementById('am-hi').value,basis:document.getElementById('am-basis').value};
-  if(editAxisId){const i=state.axes.findIndex(a=>a.id===editAxisId);if(i>=0)state.axes[i]=entry;}
-  else state.axes.push(entry);
-  saveState();closeAxisModal();renderAxes();buildMapSelects();toast('保存しました');
+  if(!id||!name)return toast('IDと名前を入力してください');
+  const entry={id,name,color:'#888780',desc:document.getElementById('am-desc').value,lo:document.getElementById('am-lo').value,mid:document.getElementById('am-mid').value,hi:document.getElementById('am-hi').value,basis:document.getElementById('am-basis').value};
+  if(editAId){const i=S.axes.findIndex(a=>a.id===editAId);if(i>=0)S.axes[i]=entry;}
+  else S.axes.push(entry);
+  saveS();closeAxisModal();renderAxes();buildMapSel();toast('保存しました');
 }
+function delAxis(){if(!editAId)return;S.axes=S.axes.filter(a=>a.id!==editAId);saveS();closeAxisModal();renderAxes();buildMapSel();toast('削除しました');}
 
-function delAxis(){
-  if(!editAxisId)return;
-  state.axes=state.axes.filter(a=>a.id!==editAxisId);
-  saveState();closeAxisModal();renderAxes();buildMapSelects();toast('削除しました');
-}
-
-// ── MARKET ────────────────────────────────────────────────────
-let editMktId=null;
-
-function mktExpandAll(exp){
-  if(exp)state.mkts.forEach(m=>state.expandedIds.push(m.id));
-  else state.expandedIds=[];
-  state.expandedIds=[...new Set(state.expandedIds)];
-  saveState();renderMkt();
-}
-
-function fmt(v){
-  if(!v||v===0)return '要調査';
-  if(v>=10000)return (v/10000).toFixed(1)+'兆円';
-  return v.toLocaleString()+'億円';
-}
-
+// ── MARKET ───────────────────────────────────────────────────
+let editMId=null;
+function mktAll(exp){if(exp)S.mkts.forEach(m=>{if(!S.expandedIds.includes(m.id))S.expandedIds.push(m.id);});else S.expandedIds=[];saveS();renderMkt();}
+function fmt(v){if(!v||v===0)return '要調査';if(v>=10000)return (v/10000).toFixed(1)+'兆円';return v.toLocaleString()+'億円';}
 function renderMkt(){
-  const maxV=Math.max(...state.mkts.map(m=>m.val||0),1);
-  const roots=state.mkts.filter(m=>!m.parentId&&m.parentId!==0);
-  document.getElementById('mkt-list').innerHTML='';
-  roots.forEach(r=>document.getElementById('mkt-list').appendChild(buildMktNode(r,maxV,0)));
+  const maxV=Math.max(...S.mkts.map(m=>m.val||0),1);
+  const roots=S.mkts.filter(m=>!m.parentId&&m.parentId!==0);
+  const el=document.getElementById('mk-list');el.innerHTML='';
+  roots.forEach(r=>el.appendChild(buildMktNode(r,maxV,0)));
   buildMktParent();
 }
-
 function buildMktNode(node,maxV,depth){
-  const children=state.mkts.filter(m=>String(m.parentId)===String(node.id));
-  const isExp=state.expandedIds.includes(node.id);
-  const color=TYPE_COLORS[node.type]||'#888';
+  const children=S.mkts.filter(m=>String(m.parentId)===String(node.id));
+  const isExp=S.expandedIds.includes(node.id);
+  const color=TC[node.type]||'#888';
   const pct=node.val&&maxV>0?Math.round(node.val/maxV*100):0;
-  const el=document.createElement('div');
-  el.className='mkt-node';el.style.marginLeft=(depth*12)+'px';
-  const hd=document.createElement('div');hd.className='mkt-head';
-  hd.innerHTML=`
-    <span class="mkt-toggle" onclick="toggleMkt(${node.id})" style="cursor:pointer">${children.length?(isExp?'▼':'▶'):' '}</span>
-    <span class="mkt-name" style="font-size:${Math.max(12,14-depth)}px">${node.name}</span>
-    <div class="mkt-bar-wrap"><div class="mkt-bar" style="width:${pct}%;background:${color}"></div></div>
-    <span class="mkt-val" style="color:${color};font-size:${Math.max(12,14-depth)}px">${fmt(node.val)}</span>
-    <div class="mkt-tags">
-      <span class="tag" style="background:${color}22;color:${color}">${TYPE_LBL[node.type]||''}</span>
-      <span class="tag" style="background:${STATUS_COL[node.status]}22;color:${STATUS_COL[node.status]}">${STATUS_LBL[node.status]||''}</span>
-      ${node.sj==='current'?'<span class="tag" style="background:var(--red-l);color:var(--red)">主戦場</span>':''}
-      ${node.sj==='target'?'<span class="tag" style="background:var(--teal-l);color:var(--teal-d)">狙い目</span>':''}
-    </div>
-    <button class="btn btn-sm" onclick="openMktModal(${node.id})" style="flex-shrink:0">編集</button>`;
+  const el=document.createElement('div');el.className='mk-node';el.style.marginLeft=(depth*12)+'px';
+  const hd=document.createElement('div');hd.className='mk-hd';
+  hd.innerHTML=`<span style="font-size:11px;color:var(--text3);width:12px;flex-shrink:0;cursor:pointer" onclick="toggleMkt(${node.id})">${children.length?(isExp?'▼':'▶'):' '}</span>
+    <span class="mk-nm" style="font-size:${Math.max(11,13-depth)}px">${node.name}</span>
+    <div class="mk-bw"><div class="mk-b" style="width:${pct}%;background:${color}"></div></div>
+    <span class="mk-v" style="color:${color};font-size:${Math.max(11,13-depth)}px">${fmt(node.val)}</span>
+    <span class="tag" style="color:${color};border-color:${color}">${TL[node.type]||''}</span>
+    <span class="tag" style="color:${SC[node.status]};border-color:${SC[node.status]}">${SL[node.status]||''}</span>
+    ${node.sj==='current'?'<span class="tag" style="color:var(--red);border-color:var(--red)">主戦場</span>':''}
+    ${node.sj==='target'?'<span class="tag" style="color:var(--teal);border-color:var(--teal)">狙い目</span>':''}
+    <button style="font-size:10px;height:22px;margin-left:4px;flex-shrink:0" onclick="openMktModal(${node.id})">編集</button>`;
   el.appendChild(hd);
-  if(node.memo){const m=document.createElement('div');m.className='mkt-memo';m.textContent=node.memo;el.appendChild(m);}
-  if(children.length&&isExp){
-    const cw=document.createElement('div');cw.className='mkt-children';
-    children.forEach(c=>cw.appendChild(buildMktNode(c,maxV,depth+1)));
-    el.appendChild(cw);
-  }
+  if(node.memo){const m=document.createElement('div');m.className='mk-mm';m.textContent=node.memo;el.appendChild(m);}
+  if(children.length&&isExp){const cw=document.createElement('div');cw.className='mk-ch';children.forEach(c=>cw.appendChild(buildMktNode(c,maxV,depth+1)));el.appendChild(cw);}
   return el;
 }
-
-function toggleMkt(id){
-  const idx=state.expandedIds.indexOf(id);
-  if(idx>=0)state.expandedIds.splice(idx,1);else state.expandedIds.push(id);
-  saveState();renderMkt();
-}
-
-function buildMktParent(){
-  const sel=document.getElementById('mm-parent');if(!sel)return;
-  sel.innerHTML='<option value="">なし（トップレベル）</option>'+state.mkts.map(m=>`<option value="${m.id}">${m.name}</option>`).join('');
-}
-
+function toggleMkt(id){const i=S.expandedIds.indexOf(id);if(i>=0)S.expandedIds.splice(i,1);else S.expandedIds.push(id);saveS();renderMkt();}
+function buildMktParent(){const sel=document.getElementById('mm-parent');if(!sel)return;sel.innerHTML='<option value="">なし（トップ）</option>'+S.mkts.map(m=>`<option value="${m.id}">${m.name}</option>`).join('');}
 function openMktModal(id=null){
-  editMktId=id;
-  const m=id?state.mkts.find(x=>x.id==id):null;
-  document.getElementById('mkt-modal-title').textContent=m?m.name+' を編集':'市場を追加';
-  document.getElementById('mm-name').value=m?m.name:'';
-  document.getElementById('mm-val').value=m?m.val||0:0;
-  document.getElementById('mm-type').value=m?m.type||'sub':'sub';
-  document.getElementById('mm-status').value=m?m.status||'estimated':'estimated';
-  document.getElementById('mm-sj').value=m?m.sj||'':'';
-  document.getElementById('mm-memo').value=m?m.memo||'':'';
+  editMId=id;const m=id?S.mkts.find(x=>x.id==id):null;
+  document.getElementById('mm-title').textContent=m?m.name+' を編集':'市場を追加';
+  document.getElementById('mm-name').value=m?m.name:'';document.getElementById('mm-val').value=m?m.val||0:0;document.getElementById('mm-type').value=m?m.type||'sub':'sub';document.getElementById('mm-status').value=m?m.status||'estimated':'estimated';document.getElementById('mm-sj').value=m?m.sj||'':'';document.getElementById('mm-memo').value=m?m.memo||'':'';
   document.getElementById('mm-del').style.display=m?'inline-block':'none';
-  document.getElementById('mkt-modal').classList.add('open');
-  buildMktParent();
+  document.getElementById('mm-modal').classList.add('open');buildMktParent();
   if(m)document.getElementById('mm-parent').value=m.parentId||'';
 }
-
-function closeMktModal(){document.getElementById('mkt-modal').classList.remove('open');editMktId=null;}
-
+function closeMktModal(){document.getElementById('mm-modal').classList.remove('open');editMId=null;}
 function saveMkt(){
   const name=document.getElementById('mm-name').value.trim();if(!name)return toast('名前を入力してください');
-  const parentRaw=document.getElementById('mm-parent').value;
-  const entry={id:editMktId||state.nextMktId++,name,val:parseFloat(document.getElementById('mm-val').value)||0,
-    type:document.getElementById('mm-type').value,parentId:parentRaw?parseInt(parentRaw):'',
-    status:document.getElementById('mm-status').value,sj:document.getElementById('mm-sj').value,
-    memo:document.getElementById('mm-memo').value,expanded:false};
-  if(editMktId){const i=state.mkts.findIndex(m=>m.id===editMktId);if(i>=0)state.mkts[i]=entry;}
-  else{state.mkts.push(entry);if(entry.parentId&&!state.expandedIds.includes(entry.parentId))state.expandedIds.push(entry.parentId);}
-  saveState();closeMktModal();renderMkt();toast('保存しました');
+  const pr=document.getElementById('mm-parent').value;
+  const entry={id:editMId||S.nextMktId++,name,val:parseFloat(document.getElementById('mm-val').value)||0,type:document.getElementById('mm-type').value,parentId:pr?parseInt(pr):'',status:document.getElementById('mm-status').value,sj:document.getElementById('mm-sj').value,memo:document.getElementById('mm-memo').value};
+  if(editMId){const i=S.mkts.findIndex(m=>m.id===editMId);if(i>=0)S.mkts[i]=entry;}
+  else{S.mkts.push(entry);if(entry.parentId&&!S.expandedIds.includes(entry.parentId))S.expandedIds.push(entry.parentId);}
+  saveS();closeMktModal();renderMkt();toast('保存しました');
 }
+function delMkt(){if(!editMId)return;S.mkts=S.mkts.filter(m=>m.id!==editMId&&String(m.parentId)!==String(editMId));saveS();closeMktModal();renderMkt();toast('削除しました');}
 
-function delMkt(){
-  if(!editMktId)return;
-  state.mkts=state.mkts.filter(m=>m.id!==editMktId&&String(m.parentId)!==String(editMktId));
-  saveState();closeMktModal();renderMkt();toast('削除しました');
-}
-
-// ── SUMMARY ───────────────────────────────────────────────────
+// ── SUMMARY ──────────────────────────────────────────────────
 function renderSummary(){
-  const sorted=[...state.comps].sort((a,b)=>tot(b)-tot(a));
-  const ids=state.axes.map(a=>a.id),names=state.axes.map(a=>a.name);
-  const sj=state.comps.find(c=>c.cat==='自社');
-  document.getElementById('sum-table').innerHTML=`<table class="sum">
-    <tr><th style="min-width:120px">競合</th>${ids.map((id,i)=>`<th>${names[i]}</th>`).join('')}<th>平均</th></tr>
-    ${sorted.map(c=>{const color=CAT_COLORS[c.cat]||'#888';return `<tr class="${c.cat==='自社'?'self-row':''}">
-      <td><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${color};margin-right:5px;vertical-align:middle"></span>${c.name.length>14?c.name.slice(0,14)+'…':c.name}</td>
-      ${ids.map(id=>`<td><div class="mini-bar-cell"><div class="mini-bar" style="width:${Math.round((c[id]||0)/2)}px;background:${color}"></div><span style="font-size:12px;font-weight:600;color:${(c[id]||0)>=70?color:'var(--text3)'}">${c[id]||0}</span></div></td>`).join('')}
+  const sorted=[...S.comps].sort((a,b)=>(b.O||0)-(a.O||0));
+  const ids=S.axes.map(a=>a.id),names=S.axes.map(a=>a.name);
+  const sj=S.comps.find(c=>c.cat==='自社');
+  document.getElementById('sum-tbl').innerHTML=`<table class="st">
+    <tr><th>競合</th><th>M カテゴリ</th><th>N モデル</th>${ids.map((id,i)=>`<th title="${names[i]}">${id}</th>`).join('')}<th>平均</th></tr>
+    ${sorted.map(c=>{const color=CC[c.cat]||'#888';const mc=MC_COL[c.M]||'#888';const nc=NC_COL[c.N]||'#888';return `<tr class="${c.cat==='自社'?'s-row':''}">
+      <td><span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:${color};margin-right:4px;vertical-align:middle"></span>${c.name.length>12?c.name.slice(0,12)+'…':c.name}</td>
+      <td><span style="font-size:10px;color:${mc}">${c.M||'-'}</span></td>
+      <td><span style="font-size:10px;color:${nc}">${c.N||'-'}</span></td>
+      ${ids.map(id=>`<td><div class="cbc"><div class="mb" style="width:${Math.round((c[id]||0)/2)}px;background:${color}"></div><span style="font-size:10px;font-weight:600;color:${(c[id]||0)>=70?color:'var(--text3)'}">${c[id]||0}</span></div></td>`).join('')}
       <td style="font-weight:700;color:${color}">${tot(c)}</td></tr>`;}).join('')}
   </table>`;
   if(sj){
-    const gaps=ids.map((id,i)=>({name:names[i],gap:Math.max(...state.comps.filter(c=>c.cat!=='自社').map(c=>c[id]||0))-(sj[id]||0),sj:sj[id]||0,max:Math.max(...state.comps.filter(c=>c.cat!=='自社').map(c=>c[id]||0))})).sort((a,b)=>b.gap-a.gap);
+    const gaps=ids.map((id,i)=>({name:names[i],gap:Math.max(...S.comps.filter(c=>c.cat!=='自社').map(c=>c[id]||0))-(sj[id]||0),sj:sj[id]||0,max:Math.max(...S.comps.filter(c=>c.cat!=='自社').map(c=>c[id]||0))})).sort((a,b)=>b.gap-a.gap);
     const strengths=ids.map((id,i)=>({name:names[i],val:sj[id]||0})).filter(x=>x.val>=70).sort((a,b)=>b.val-a.val);
-    document.getElementById('sum-insight').innerHTML=`<strong>See Jay 競合比較インサイト</strong><br>
+    document.getElementById('sum-ins').innerHTML=`<strong>See Jay 競合比較インサイト（新基準）</strong><br>
+      O 主力商品一致度：<strong>100点</strong>（「英語プライベートツアーの現場運営・ガイド手配」と完全一致する競合は限定的）<br>
       強み：${strengths.length?strengths.map(s=>`${s.name}（${s.val}点）`).join('・'):'現時点で70点超の軸なし'}<br>
       最大ギャップ：${gaps[0].name}（自社${gaps[0].sj}点 vs 競合最高${gaps[0].max}点 / 差${gaps[0].gap}点）<br>
       次ギャップ：${gaps[1].name}（自社${gaps[1].sj}点 vs 競合最高${gaps[1].max}点 / 差${gaps[1].gap}点）<br>
-      <strong>空白ポジション：</strong>「B2B対応力が高く・柔軟性も高い」象限に単独で存在しているのはSee Jayのみ。手配業取得後はサービス範囲でさらに差別化可能。`;
+      <strong>空白ポジション：</strong>「C B2B対応力80 × D オペ柔軟性80 × O主力商品一致度100」の組み合わせはSee Jayのみ。手配業取得後はAも大幅改善予定。`;
   }
 }
 
-// ── MODAL CLOSE ON BG ────────────────────────────────────────
-['comp-modal','axis-modal','mkt-modal'].forEach(id=>{
+// ── MODAL CLOSE ──────────────────────────────────────────────
+['cm-modal','am-modal','mm-modal'].forEach(id=>{
   document.getElementById(id).addEventListener('click',function(e){if(e.target===this)this.classList.remove('open');});
 });
 
+window.addEventListener('resize',()=>{if(cv==='map')renderMap();});
+
 // ── INIT ─────────────────────────────────────────────────────
-window.addEventListener('resize',()=>{if(currentView==='map')renderMap();});
-loadState();
-buildMapSelects();
-renderMap();
+loadS();buildMapSel();renderMap();
 </script>
 </body>
 </html>
